@@ -4,8 +4,6 @@ const app = require('../../app');
 const api = supertest(app);
 const helper = require('./test_helper');
 const Booking = require('../models/booking');
-const test_helper = require('./test_helper');
-const { initialBookings } = require('./test_helper');
 
 beforeEach(async () => {
   await Booking.deleteMany({});
@@ -27,6 +25,13 @@ describe('When there are already some bookings on DB', () => {
   test('all bookings are returned', async () => {
     const response = await api.get('/api/v1/bookings');
     expect(response.body).toHaveLength(helper.initialBookings.length);
+  });
+
+  test('all bookings for the month are returned when a query is present', async () => {
+    const response = await api.get('/api/v1/bookings?month=10&year=2020');
+    response.body.forEach((booking) => {
+      expect(booking.date).toMatch(/2020-11/);
+    });
   });
 });
 

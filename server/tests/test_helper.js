@@ -78,4 +78,18 @@ const bookingsInDb = async () => {
   return bookings.map((booking) => booking.toJSON());
 };
 
-module.exports = { initialBookings, bookingsInDb };
+const nonExistingId = async () => {
+  const booking = new Booking({
+    name: 'banana',
+    email: 'bbasdf@afsd.com',
+    date: new Date(),
+    start: '12:30',
+    end: '13:00',
+  });
+  await booking.save();
+  await booking.remove();
+
+  return booking._id.toString();
+};
+
+module.exports = { initialBookings, bookingsInDb, nonExistingId };
