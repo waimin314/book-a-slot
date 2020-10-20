@@ -5,6 +5,7 @@ import AllSlots from './AllSlots';
 
 export default function CalendarView() {
   const [date, onChange] = useState(new Date());
+
   return (
     <div>
       <Calendar onChange={onChange} value={date} />
