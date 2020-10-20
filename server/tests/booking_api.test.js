@@ -35,6 +35,24 @@ describe('When there are already some bookings on DB', () => {
   });
 });
 
+describe('When retrieving a booking with ID', () => {
+  test('a booking with valid id is returned', async () => {
+    const bookingsAtStart = await helper.bookingsInDb();
+    const firstBookingInDb = bookingsAtStart[0];
+    const response = await api
+      .get(`/api/v1/bookings/${firstBookingInDb.id}`)
+      .expect(200)
+      .expect('Content-type', /application\/json/);
+
+    expect(response.body).toEqual(JSON.parse(JSON.stringify(firstBookingInDb)));
+  });
+
+  test('a non-existing id should return status 404', async () => {
+    const nonExistingId = await helper.nonExistingId();
+    await api.get(`/api/v1/bookings/${nonExistingId}`).expect(404);
+  });
+});
+
 afterAll(() => {
   mongoose.connection.close();
 });
