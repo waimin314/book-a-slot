@@ -16,9 +16,9 @@ const getCurMonthBookings = async () => {
     date.getMonth(),
     date.getFullYear()
   );
-
+  console.log(response.data);
   addToCache(response.data);
-
+  console.log(cachedBookings);
   return response;
 };
 
@@ -27,8 +27,10 @@ const getBookingsOfDate = async (date) => {};
 const addToCache = (bookings) => {
   bookings.forEach(({ date, start, end }) => {
     const parsedDate = new Date(date);
-    const month = parsedDate.getMonth();
     const year = parsedDate.getFullYear();
+    const month = parsedDate.getMonth();
+    const dateOfMonth = parsedDate.getDate();
+    const duration = `${start}-${end}`;
     // check if year is already inside the cache
     if (!cachedBookings[year]) {
       cachedBookings[year] = [];
@@ -37,7 +39,10 @@ const addToCache = (bookings) => {
     if (!cachedBookings[year][month]) {
       cachedBookings[year][month] = [];
     }
-    cachedBookings[year][month].push(`${start}-${end}`);
+    if (!cachedBookings[year][month][dateOfMonth]) {
+      cachedBookings[year][month][dateOfMonth] = [];
+    }
+    cachedBookings[year][month][dateOfMonth].push(duration);
   });
 };
 
