@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const baseUrl = '/api/v1/bookings';
 
-const bookingsByMonth = {};
+const cachedBookings = {};
 
 const getBookingsByMonth = async (month, year) => {
   const response = await axios.get(`${baseUrl}?month=${month}&year=${year}`);
@@ -16,20 +16,28 @@ const getCurMonthBookings = async () => {
     date.getMonth(),
     date.getFullYear()
   );
-  console.log('getCurMonthBookings -> response', response);
 
-  bookingsByMonth[date.getMonth()] = sanitize(response.data);
-  console.log(bookingsByMonth);
+  addToCache(response.data);
 
   return response;
 };
 
-const sanitize = (bookings) => {
-  return bookings.map((booking) => {
-    return {
-      date: booking.date,
-      duration: `${booking.start}-${booking.end}`,
-    };
+const getBookingsOfDate = async (date) => {};
+
+const addToCache = (bookings) => {
+  bookings.forEach(({ date, start, end }) => {
+    const parsedDate = new Date(date);
+    const month = parsedDate.getMonth();
+    const year = parsedDate.getFullYear();
+    // check if year is already inside the cache
+    if (!cachedBookings[year]) {
+      cachedBookings[year] = [];
+    }
+    // check if month is already inside the cache
+    if (!cachedBookings[year][month]) {
+      cachedBookings[year][month] = [];
+    }
+    cachedBookings[year][month].push(`${start}-${end}`);
   });
 };
 
