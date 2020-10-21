@@ -16,13 +16,26 @@ const getCurMonthBookings = async () => {
     date.getMonth(),
     date.getFullYear()
   );
-  console.log(response.data);
+
   addToCache(response.data);
-  console.log(cachedBookings);
+
   return response;
 };
 
-const getBookingsOfDate = async (date) => {};
+const getBookingsByDate = (date) => {
+  const year = date.getFullYear();
+  const month = date.getMonth();
+  const dateOfMonth = date.getDate();
+  if (
+    !cachedBookings[year] ||
+    !cachedBookings[year][month] ||
+    !cachedBookings[year][month[dateOfMonth]]
+  ) {
+    return [];
+  } else {
+    return cachedBookings[year][month][dateOfMonth];
+  }
+};
 
 const addToCache = (bookings) => {
   bookings.forEach(({ date, start, end }) => {
@@ -46,4 +59,4 @@ const addToCache = (bookings) => {
   });
 };
 
-export default { getBookingsByMonth, getCurMonthBookings };
+export default { getBookingsByMonth, getCurMonthBookings, getBookingsByDate };
