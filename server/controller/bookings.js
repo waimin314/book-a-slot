@@ -9,12 +9,15 @@ bookingsRouter.get('/', async (req, res) => {
     const startDate = new Date(Number(year), Number(month), 1);
     const endDate = new Date(Number(year), Number(month) + 1, 0);
 
-    const bookings = await Booking.find({
-      date: { $gte: startDate, $lte: endDate },
-    });
+    const bookings = await Booking.find(
+      {
+        date: { $gte: startDate, $lte: endDate },
+      },
+      { name: 0, email: 0, createAt: 0 }
+    );
     return res.json(bookings);
   } else {
-    const bookings = await Booking.find({});
+    const bookings = await Booking.find({}, { name: 0, email: 0, createAt: 0 });
     return res.json(bookings);
   }
 });
