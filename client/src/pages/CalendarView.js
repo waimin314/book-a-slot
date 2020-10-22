@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import Slot from '../components/Slot';
@@ -42,7 +43,17 @@ export default function CalendarView() {
     <div>
       <Calendar onChange={handleDateChange} value={date} />
       <div>Selected {selectedSlot}</div>
-      {renderAllSlots()}
+      <div>{renderAllSlots()}</div>
+      <div>
+        <Link
+          to={{
+            pathname: '/book',
+            state: { selectedDate: date, slot: selectedSlot },
+          }}
+        >
+          <button>Continue</button>
+        </Link>
+      </div>
     </div>
   );
 }

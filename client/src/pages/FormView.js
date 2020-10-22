@@ -1,6 +1,9 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 
-export default function FormView({ selectedDate, slot }) {
+export default function FormView() {
+  const { selectedDate, slot } = useLocation().state;
+
   return (
     <div>
       You are booking for <strong>{slot}</strong> on{' '}
