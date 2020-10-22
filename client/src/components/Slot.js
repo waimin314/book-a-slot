@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Slot({ timing }) {
+export default function Slot({ timing, onSelect }) {
   return (
     <div
       style={{
@@ -10,6 +10,7 @@ export default function Slot({ timing }) {
         backgroundColor: timing.booked ? 'grey' : 'white',
         color: timing.booked ? 'white' : 'black',
       }}
+      onClick={() => (onSelect ? onSelect(timing.time) : {})}
     >
       {timing.time}
     </div>
