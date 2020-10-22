@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import Slot from './Slot';
+import Slot from '../components/Slot';
 import bookingService from '../services/bookings';
 
 export default function CalendarView() {
