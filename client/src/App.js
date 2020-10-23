@@ -1,17 +1,17 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import CalendarView from './pages/CalendarView';
-import FormView from './pages/FormView';
+import CalendarPage from './pages/CalendarPage';
+import BookingFormPage from './pages/BookingFormPage';
 
 function App() {
   return (
     <Router>
       <Switch>
         <Route path='/book'>
-          <FormView />
+          <BookingFormPage />
         </Route>
         <Route path='/'>
-          <CalendarView />
+          <CalendarPage />
         </Route>
       </Switch>
     </Router>

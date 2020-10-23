@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import bookingService from './../services/bookings';
+import bookingService from '../services/bookings';
 
 export default function FormView() {
   const { selectedDate, slot } = useLocation().state;
