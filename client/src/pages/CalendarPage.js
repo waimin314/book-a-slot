@@ -40,18 +40,28 @@ export default function CalendarView() {
   };
 
   return (
-    <div>
-      <Calendar onChange={handleDateChange} value={date} />
-      <div>Selected {selectedSlot}</div>
-      <div>{renderAllSlots()}</div>
-      <div>
+    <div className='flex flex-col items-center max-w-full'>
+      <div className='my-10 shadow-lg'>
+        <Calendar onChange={handleDateChange} value={date} />
+      </div>
+      <div className='block self-start my-2 mx-10 text-xl'>
+        Selected{'  '}
+        <strong>{selectedSlot}</strong>
+      </div>
+
+      <div className='flex flex-wrap h-64 justify-center py-8 max-w-full my-2 mx-10 shadow-tb overflow-y-scroll'>
+        {renderAllSlots()}
+      </div>
+      <div className='w-full px-10'>
         <Link
           to={{
             pathname: '/book',
             state: { selectedDate: date, slot: selectedSlot },
           }}
         >
-          <button>Continue</button>
+          <button className='w-full my-5 p-2 bg-indigo-600 text-white text-lg rounded-md'>
+            Continue
+          </button>
         </Link>
       </div>
     </div>
