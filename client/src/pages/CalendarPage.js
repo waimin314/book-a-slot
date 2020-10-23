@@ -15,7 +15,7 @@ export default function CalendarView() {
       await bookingService.getCurMonthBookings();
     };
     fetchCurMonth();
-    setBookingsOfDate([...bookingService.getBookingsByDate(date)]);
+    setBookingsOfDate([...bookingService.getBookingsByDate(new Date())]);
   }, []);
 
   const handleDateChange = (date) => {
