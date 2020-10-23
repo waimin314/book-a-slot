@@ -12,6 +12,11 @@ const getBookingsByMonth = async (month, year) => {
   return response;
 };
 
+const makeBooking = async (booking) => {
+  const response = await axios.post(`${baseUrl}`, booking);
+  return response;
+};
+
 const getCurMonthBookings = async () => {
   const date = new Date();
   const response = await getBookingsByMonth(
@@ -88,4 +93,9 @@ const addToCache = (bookings) => {
   });
 };
 
-export default { getBookingsByMonth, getCurMonthBookings, getBookingsByDate };
+export default {
+  getBookingsByMonth,
+  getCurMonthBookings,
+  getBookingsByDate,
+  makeBooking,
+};
