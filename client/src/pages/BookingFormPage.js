@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import bookingService from '../services/bookings';
+import Popup from './../components/Popup';
 
 export default function FormView() {
   const { selectedDate, slot } = useLocation().state;
@@ -27,6 +28,13 @@ export default function FormView() {
 
   return (
     <div>
+      <div className={`${bookingStatus ? 'visible' : 'hidden'}`}>
+        <Popup
+          name={name}
+          time={slot}
+          date={selectedDate.toLocaleDateString()}
+        ></Popup>
+      </div>
       <p className='my-5 mx-10 text-xl'>
         You are booking for <strong>{slot}</strong> on{' '}
         <strong>{selectedDate.toLocaleDateString()}</strong>
@@ -71,7 +79,6 @@ export default function FormView() {
           </div>
         </form>
       </div>
-      <h3>{bookingStatus ? 'Booking confirmed!' : ''}</h3>
     </div>
   );
 }
