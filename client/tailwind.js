@@ -9,6 +9,17 @@ module.exports = {
   important: false,
   separator: ':',
   theme: {
+    extend: {
+      animation: {
+        slideIn: 'slide_in 0.5s',
+      },
+      keyframes: {
+        slide_in: {
+          '0%': { transform: 'translateY(-50rem)' },
+          '100%': { transform: 'translateY(0)' },
+        },
+      },
+    },
     screens: {
       sm: '640px',
       md: '768px',

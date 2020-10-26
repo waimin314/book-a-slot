@@ -19192,6 +19192,26 @@ video {
   }
 }
 
+@keyframes slide_in {
+  0% {
+    transform: translateY(-50rem);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide_out {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-50rem);
+  }
+}
+
 .animate-none {
   animation: none;
 }
@@ -19210,6 +19230,14 @@ video {
 
 .animate-bounce {
   animation: bounce 1s infinite;
+}
+
+.animate-slideIn {
+  animation: slide_in 0.5s;
+}
+
+.animate-slideOut {
+  animation: slide_out 0.5s;
 }
 
 @media (min-width: 640px) {
@@ -37815,6 +37843,14 @@ video {
 
   .sm\:animate-bounce {
     animation: bounce 1s infinite;
+  }
+
+  .sm\:animate-slideIn {
+    animation: slide_in 0.5s;
+  }
+
+  .sm\:animate-slideOut {
+    animation: slide_out 0.5s;
   }
 }
 
@@ -56422,6 +56458,14 @@ video {
   .md\:animate-bounce {
     animation: bounce 1s infinite;
   }
+
+  .md\:animate-slideIn {
+    animation: slide_in 0.5s;
+  }
+
+  .md\:animate-slideOut {
+    animation: slide_out 0.5s;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -75028,6 +75072,14 @@ video {
   .lg\:animate-bounce {
     animation: bounce 1s infinite;
   }
+
+  .lg\:animate-slideIn {
+    animation: slide_in 0.5s;
+  }
+
+  .lg\:animate-slideOut {
+    animation: slide_out 0.5s;
+  }
 }
 
 @media (min-width: 1280px) {
@@ -93633,5 +93685,13 @@ video {
 
   .xl\:animate-bounce {
     animation: bounce 1s infinite;
+  }
+
+  .xl\:animate-slideIn {
+    animation: slide_in 0.5s;
+  }
+
+  .xl\:animate-slideOut {
+    animation: slide_out 0.5s;
   }
 }
