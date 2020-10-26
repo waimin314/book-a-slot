@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 export default function Slot({ timing, onSelect }) {
   const handleOnClick = () => {
-    onSelect && onSelect(timing.time);
+    !timing.booked && onSelect(timing.time);
   };
 
   return (

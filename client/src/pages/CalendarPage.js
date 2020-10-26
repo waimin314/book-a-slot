@@ -30,12 +30,8 @@ export default function CalendarView() {
   };
 
   const renderAllSlots = () => {
-    return bookingsOfDate.map((booking) => {
-      if (booking.booked) {
-        return <Slot timing={booking} />;
-      } else {
-        return <Slot timing={booking} onSelect={handleOnSelect} />;
-      }
+    return bookingsOfDate.map((booking, i) => {
+      return <Slot timing={booking} key={i} onSelect={handleOnSelect} />;
     });
   };
 
