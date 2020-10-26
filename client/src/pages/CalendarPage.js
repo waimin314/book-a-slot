@@ -15,7 +15,7 @@ export default function CalendarView() {
       await bookingService.getCurMonthBookings();
     };
     fetchCurMonth();
-    setBookingsOfDate([...bookingService.getBookingsByDate(new Date())]);
+    setBookingsOfDate(bookingService.getBookingsByDate(new Date()));
   }, []);
 
   const handleDateChange = (date) => {
@@ -52,8 +52,10 @@ export default function CalendarView() {
         <strong>{selectedSlot}</strong>
       </div>
 
-      <div className='flex flex-wrap h-64 justify-center py-8 max-w-full my-2 mx-10 shadow-tb overflow-y-scroll'>
-        {renderAllSlots()}
+      <div className='py-5 my-2 mx-10 shadow-tb '>
+        <div className='flex flex-wrap h-64 justify-center py-8 max-w-full overflow-y-scroll'>
+          {renderAllSlots()}
+        </div>
       </div>
       <div className='w-full px-10'>
         <Link
