@@ -26,28 +26,42 @@ export default function FormView() {
 
   return (
     <div>
-      You are booking for <strong>{slot}</strong> on{' '}
-      <strong>{selectedDate.toLocaleDateString()}</strong>
-      <form onSubmit={handleOnSubmit}>
-        <label>
-          Full Name:{' '}
-          <input
-            type='text'
-            onChange={(event) => setName(event.target.value)}
-            value={name}
-          />
-        </label>
-        <label>
-          Email:{' '}
-          <input
-            type='email'
-            onChange={(event) => setEmail(event.target.value)}
-            value={email}
-          />
-        </label>
-        <button>Back</button>
-        <input type='submit' value='Book' />
-      </form>
+      <p className='my-5 mx-10 text-xl'>
+        You are booking for <strong>{slot}</strong> on{' '}
+        <strong>{selectedDate.toLocaleDateString()}</strong>
+      </p>
+      <div className='mx-10 my-10'>
+        <form onSubmit={handleOnSubmit}>
+          <div>
+            <label className='block text-lg text-gray-700'>Full Name:</label>
+            <input
+              className='w-full border-b-2 border-gray-800 p-1  my-1 text-xl focus:border-indigo-600 focus:outline-none'
+              type='text'
+              onChange={(event) => setName(event.target.value)}
+              value={name}
+            />
+          </div>
+          <div className='mt-20 mb-10'>
+            <label className='block text-lg text-gray-700'>Email: </label>
+            <input
+              className='w-full border-b-2 border-gray-800 p-1 my-1 text-xl focus:border-indigo-600 focus:outline-none'
+              type='email'
+              onChange={(event) => setEmail(event.target.value)}
+              value={email}
+            />
+          </div>
+          <div className='flex flex-col'>
+            <button className='w-full my-5 p-2 bg-red-600  text-white text-lg rounded-md'>
+              Back
+            </button>
+            <input
+              className='w-full my-5 p-2 bg-indigo-600 text-white text-lg rounded-md'
+              type='submit'
+              value='Book'
+            />
+          </div>
+        </form>
+      </div>
       <h3>{bookingStatus ? 'Booking confirmed!' : ''}</h3>
     </div>
   );
