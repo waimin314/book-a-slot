@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import bookingService from '../services/bookings';
 
 export default function FormView() {
@@ -57,9 +58,11 @@ export default function FormView() {
             />
           </div>
           <div className='flex flex-col'>
-            <button className='w-full my-5 p-2 bg-red-600  text-white text-lg rounded-md'>
-              Back
-            </button>
+            <Link to='/'>
+              <button className='w-full my-5 p-2 bg-red-600  text-white text-lg rounded-md'>
+                Back
+              </button>
+            </Link>
             <input
               className='w-full my-5 p-2 bg-indigo-600 text-white text-lg rounded-md'
               type='submit'
