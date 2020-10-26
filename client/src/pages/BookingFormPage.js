@@ -33,19 +33,25 @@ export default function FormView() {
       <div className='mx-10 my-10'>
         <form onSubmit={handleOnSubmit}>
           <div>
-            <label className='block text-lg text-gray-700'>Full Name:</label>
+            <label className='block text-lg text-gray-700' htmlFor='fullname'>
+              Full Name:
+            </label>
             <input
               className='w-full border-b-2 border-gray-800 p-1  my-1 text-xl focus:border-indigo-600 focus:outline-none'
               type='text'
+              id='fullname'
               onChange={(event) => setName(event.target.value)}
               value={name}
             />
           </div>
           <div className='mt-20 mb-10'>
-            <label className='block text-lg text-gray-700'>Email: </label>
+            <label className='block text-lg text-gray-700' htmlFor='email'>
+              Email:
+            </label>
             <input
               className='w-full border-b-2 border-gray-800 p-1 my-1 text-xl focus:border-indigo-600 focus:outline-none'
               type='email'
+              id='email'
               onChange={(event) => setEmail(event.target.value)}
               value={email}
             />
