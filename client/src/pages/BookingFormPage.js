@@ -27,7 +27,7 @@ export default function FormView() {
   };
 
   return (
-    <div>
+    <div className='lg:flex lg:flex-col lg:m-20 lg:items-center xl:m-40'>
       <div className={`${bookingStatus ? 'visible' : 'hidden'}`}>
         <Popup
           name={name}
@@ -46,7 +46,8 @@ export default function FormView() {
               Full Name:
             </label>
             <input
-              className='w-full border-b-2 border-gray-800 p-1  my-1 text-xl focus:border-indigo-600 focus:outline-none'
+              className='w-full border-b-2 border-gray-800 p-1  my-1 text-xl focus:border-indigo-600 focus:outline-none 
+                          lg:w-auto'
               type='text'
               id='fullname'
               onChange={(event) => setName(event.target.value)}
@@ -58,21 +59,29 @@ export default function FormView() {
               Email:
             </label>
             <input
-              className='w-full border-b-2 border-gray-800 p-1 my-1 text-xl focus:border-indigo-600 focus:outline-none'
+              className='w-full border-b-2 border-gray-800 p-1 my-1 text-xl focus:border-indigo-600 focus:outline-none 
+                          lg:w-auto'
               type='email'
               id='email'
               onChange={(event) => setEmail(event.target.value)}
               value={email}
             />
           </div>
-          <div className='flex flex-col'>
+          <div
+            className='flex flex-col
+                          lg:flex-row'
+          >
             <Link to='/'>
-              <button className='w-full my-5 p-2 bg-red-600  text-white text-lg rounded-md'>
+              <button
+                className='w-full my-5 p-2 bg-red-600  text-white text-lg rounded-md 
+                          lg:w-32 lg:p-3 lg:mr-4'
+              >
                 Back
               </button>
             </Link>
             <input
-              className='w-full my-5 p-2 bg-indigo-600 text-white text-lg rounded-md'
+              className='w-full my-5 p-2 bg-indigo-600 text-white text-lg rounded-md 
+                        lg:w-32 lg:p-3 lg:mx-20'
               type='submit'
               value='Book'
             />
