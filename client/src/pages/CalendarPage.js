@@ -44,8 +44,12 @@ export default function CalendarView() {
 
   return (
     <div className='flex flex-col items-center max-w-full'>
-      <div className='my-10 shadow-lg'>
-        <Calendar onChange={handleDateChange} value={date} />
+      <div className='my-10 shadow-lg max-w-full'>
+        <Calendar
+          maxDate={new Date(2020, 11, 31)}
+          onChange={handleDateChange}
+          value={date}
+        />
       </div>
       <div className='block self-start my-2 mx-10 text-xl'>
         Selected{'  '}
