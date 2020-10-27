@@ -43,7 +43,11 @@ export default function CalendarView() {
   };
 
   return (
-    <div className='flex flex-col items-center max-w-full'>
+    <div
+      className='flex flex-col items-center max-w-full 
+                    lg:flex-row lg:px-10 lg:m-10 
+                    xl:px-20 xl:m-20'
+    >
       <div className='my-10 shadow-lg max-w-full'>
         <Calendar
           maxDate={new Date(2020, 11, 31)}
@@ -51,27 +55,38 @@ export default function CalendarView() {
           value={date}
         />
       </div>
-      <div className='block self-start my-2 mx-10 text-xl'>
+      {/* <div className='block self-start my-2 mx-10 text-xl'>
         Selected{'  '}
         <strong>{selectedSlot}</strong>
-      </div>
+      </div> */}
 
-      <div className='py-5 my-2 mx-10 shadow-tb '>
-        <div className='flex flex-wrap h-64 justify-center py-8 max-w-full overflow-y-scroll'>
-          {renderAllSlots()}
-        </div>
-      </div>
-      <div className='w-full px-10'>
-        <Link
-          to={{
-            pathname: '/book',
-            state: { selectedDate: date, slot: selectedSlot },
-          }}
+      <div>
+        <div
+          className='py-5 my-2 mx-10 shadow-tb 
+                        lg:mt-24'
         >
-          <button className='w-full my-5 p-2 bg-indigo-600 text-white text-lg rounded-md'>
-            Continue
-          </button>
-        </Link>
+          <div className='flex flex-wrap h-64 justify-center py-8 max-w-full overflow-y-scroll'>
+            {renderAllSlots()}
+          </div>
+        </div>
+        <div
+          className='w-full px-10
+                        lg:flex lg:justify-end'
+        >
+          <Link
+            to={{
+              pathname: '/book',
+              state: { selectedDate: date, slot: selectedSlot },
+            }}
+          >
+            <button
+              className='w-full my-5 p-2 bg-indigo-600 text-white text-lg rounded-md shadow-md
+                                lg:w-auto lg:p-3 lg:mr-4'
+            >
+              Continue
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );
