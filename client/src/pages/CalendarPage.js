@@ -13,9 +13,9 @@ export default function CalendarView() {
   useEffect(() => {
     const fetchCurMonth = async () => {
       await bookingService.getCurMonthBookings();
+      setBookingsOfDate(bookingService.getBookingsByDate(new Date()));
     };
     fetchCurMonth();
-    setBookingsOfDate(bookingService.getBookingsByDate(new Date()));
   }, []);
 
   const handleDateChange = (date) => {
