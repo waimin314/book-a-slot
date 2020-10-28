@@ -13,7 +13,10 @@ export default function CalendarView() {
 
   useEffect(() => {
     const fetchCurMonth = async () => {
-      await bookingService.getCurMonthBookings();
+      await bookingService.getBookingsByMonth(
+        currentDate.getMonth(),
+        currentDate.getFullYear()
+      );
       setBookingsOfDate(bookingService.getBookingsByDate(currentDate));
     };
     fetchCurMonth();
@@ -29,8 +32,7 @@ export default function CalendarView() {
   const handleDateChange = async (date) => {
     setDate(date);
     if (currentDate.getMonth() !== date.getMonth()) {
-      const response = await prefetch(date);
-      console.log('handleDateChange -> response', response);
+      await prefetch(date);
     }
     setSelectedSlot('');
     // console.log(bookingService.getBookingsByDate(date));
