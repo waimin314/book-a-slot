@@ -9,6 +9,8 @@ const opening_hours = { start: '10:00', end: '21:00' };
 const getBookingsByMonth = async (month, year) => {
   const response = await axios.get(`${baseUrl}?month=${month}&year=${year}`);
 
+  addToCache(response.data);
+  console.log(response.data);
   return response;
 };
 
