@@ -17,7 +17,7 @@ export default function CalendarView() {
         currentDate.getMonth(),
         currentDate.getFullYear()
       );
-      setBookingsOfDate(bookingService.getBookingsByDate(currentDate));
+      setBookingsOfDate(bookingService.getBookingsByDate(new Date()));
     };
     fetchCurMonth();
   }, []);
