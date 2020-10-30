@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const baseUrl = process.env.REACT_APP_SERVER_URL || '/api/v1/bookings';
+const baseUrl =
+  process.env.REACT_APP_SERVER_URL || 'http://localhost:3001/api/v1/bookings';
 
 const cachedBookings = {};
 const INTERVAL = 30;
