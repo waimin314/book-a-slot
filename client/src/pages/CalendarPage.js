@@ -68,54 +68,69 @@ export default function CalendarView() {
   };
 
   return (
-    <div
-      className='flex flex-col items-center max-w-full 
-                    lg:flex-row lg:px-10 lg:m-10 
-                    xl:px-20 xl:m-20'
-    >
-      <div className='my-10 shadow-lg max-w-full'>
-        <Calendar
-          maxDate={new Date(2020, 11, 31)}
-          onChange={handleDateChange}
-          value={date}
-        />
+    <div>
+      <div
+        className='w-full pt-5 text-center h-48 bg-gradient-to-b from-indigo-500 to-blue-300 
+                      lg:h-64 lg:pt-10 '
+      >
+        <p
+          className='text-4xl mb-5 mx-16 text-white font-medium tracking-wider shadow-tb
+                      sm:mx-32  lg:mb-10 lg:text-5xl lg:shadow-none'
+        >
+          Book a Slot
+        </p>
+        <p className='text-xl text-gray-900'>
+          Please choose your preferred timing
+        </p>
       </div>
-      {/* <div className='block self-start my-2 mx-10 text-xl'>
+      <div
+        className='flex flex-col items-center max-w-full 
+                    lg:flex-row lg:px-10 lg:mx-32 lg:-mt-10 '
+      >
+        <div className='mb-10 -mt-12 shadow-lg max-w-full lg:mt-0'>
+          <Calendar
+            maxDate={new Date(2020, 11, 31)}
+            onChange={handleDateChange}
+            value={date}
+          />
+        </div>
+        {/* <div className='block self-start my-2 mx-10 text-xl'>
         Selected{'  '}
         <strong>{selectedSlot}</strong>
       </div> */}
 
-      <div>
-        <div
-          className='py-3 my-2 mx-10 shadow-tb 
-                        lg:mt-24 lg:py-5'
-        >
+        <div className='lg:mt-12'>
           <div
-            className={`${bookingsOfDate.length === 0 ? 'animate-pulse' : ''} 
+            className='py-3 my-2 mx-10 shadow-tb 
+                        lg:my-10'
+          >
+            <div
+              className={`${bookingsOfDate.length === 0 ? 'animate-pulse' : ''} 
                     flex flex-wrap h-64 justify-center max-w-full overflow-y-scroll`}
-          >
-            {bookingsOfDate.length === 0
-              ? renderPlaceholderSlots()
-              : renderAllSlots()}
-          </div>
-        </div>
-        <div
-          className='w-full px-10
-                        lg:flex lg:justify-end'
-        >
-          <Link
-            to={{
-              pathname: '/book',
-              state: { selectedDate: date, slot: selectedSlot },
-            }}
-          >
-            <button
-              className='w-full my-5 p-2 bg-indigo-600 text-white text-lg rounded-md shadow-md
-                                lg:w-auto lg:p-3 lg:mr-4'
             >
-              Continue
-            </button>
-          </Link>
+              {bookingsOfDate.length === 0
+                ? renderPlaceholderSlots()
+                : renderAllSlots()}
+            </div>
+          </div>
+          <div
+            className='w-full px-10
+                        lg:flex lg:justify-end'
+          >
+            <Link
+              to={{
+                pathname: '/book',
+                state: { selectedDate: date, slot: selectedSlot },
+              }}
+            >
+              <button
+                className='w-full my-5 p-2 bg-indigo-600 text-white text-lg rounded-md shadow-md
+                                lg:w-auto lg:p-3 lg:mr-4'
+              >
+                Continue
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
