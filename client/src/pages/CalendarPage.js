@@ -87,12 +87,12 @@ export default function CalendarView() {
 
       <div>
         <div
-          className='py-5 my-2 mx-10 shadow-tb 
-                        lg:mt-24'
+          className='py-3 my-2 mx-10 shadow-tb 
+                        lg:mt-24 lg:py-5'
         >
           <div
             className={`${bookingsOfDate.length === 0 ? 'animate-pulse' : ''} 
-                    flex flex-wrap h-64 justify-center py-8 max-w-full overflow-y-scroll`}
+                    flex flex-wrap h-64 justify-center max-w-full overflow-y-scroll`}
           >
             {bookingsOfDate.length === 0
               ? renderPlaceholderSlots()
