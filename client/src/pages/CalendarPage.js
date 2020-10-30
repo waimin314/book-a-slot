@@ -4,6 +4,7 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import Slot from '../components/Slot';
 import bookingService from '../services/bookings';
+import PlaceholderSlot from '../components/PlaceholderSlot';
 
 export default function CalendarView() {
   const [date, setDate] = useState(new Date());
@@ -56,6 +57,16 @@ export default function CalendarView() {
     });
   };
 
+  const renderPlaceholderSlots = () => {
+    const arr = [];
+
+    for (let i = 0; i < 20; i++) {
+      arr.push(<PlaceholderSlot />);
+    }
+
+    return arr;
+  };
+
   return (
     <div
       className='flex flex-col items-center max-w-full 
@@ -79,8 +90,13 @@ export default function CalendarView() {
           className='py-5 my-2 mx-10 shadow-tb 
                         lg:mt-24'
         >
-          <div className='flex flex-wrap h-64 justify-center py-8 max-w-full overflow-y-scroll'>
-            {renderAllSlots()}
+          <div
+            className={`${bookingsOfDate.length === 0 ? 'animate-pulse' : ''} 
+                    flex flex-wrap h-64 justify-center py-8 max-w-full overflow-y-scroll`}
+          >
+            {bookingsOfDate.length === 0
+              ? renderPlaceholderSlots()
+              : renderAllSlots()}
           </div>
         </div>
         <div
