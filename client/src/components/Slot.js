@@ -17,7 +17,7 @@ export default function Slot({ timing, onSelect, isSelected }) {
 
   return (
     <div
-      className={`w-32 p-2 m-2 ${getColor()} text-center rounded-lg text-lg`}
+      className={`w-32 p-2 m-2 ${getColor()} text-center rounded-lg text-lg lg:h-10`}
       onClick={handleOnClick}
     >
       {timing.time}
