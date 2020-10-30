@@ -3,12 +3,12 @@ import React from 'react';
 export default function Slot({ timing, onSelect, isSelected }) {
   const getColor = () => {
     if (timing.booked) {
-      return 'bg-gray-400 text-gray-600';
+      return 'bg-gray-400 text-gray-600 cursor-not-allowed ';
     }
     if (isSelected) {
       return 'bg-indigo-600 text-white';
     }
-    return 'bg-blue-300';
+    return 'bg-blue-300 cursor-pointer';
   };
 
   const handleOnClick = () => {
