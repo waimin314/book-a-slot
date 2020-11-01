@@ -1,5 +1,6 @@
 const bookingsRouter = require('express').Router();
 const Booking = require('../models/booking');
+const mailService = require('../services/mailService');
 
 bookingsRouter.get('/', async (req, res) => {
   const query = req.query;
@@ -41,6 +42,7 @@ bookingsRouter.post('/', async (req, res) => {
   console.log('date', body.date);
 
   const savedBooking = await booking.save();
+  mailService.send(savedBooking);
   res.json(savedBooking);
 });
 

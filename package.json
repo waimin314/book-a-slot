@@ -7,7 +7,7 @@
     "start": "NODE_ENV=production node server.js",
     "server": "cross-env NODE_ENV=development nodemon server.js",
     "client": "npm start --prefix client",
-    "dev":"concurrently \"npm run server\" \"npm run client\" ",
+    "dev": "concurrently \"npm run server\" \"npm run client\" ",
     "test": "cross-env NODE_ENV=test jest --verbose --runInBand --color",
     "build:ui": "rm -rf build && cd client && npm run build --prod && cp -r build ../server/",
     "deploy": "git push heroku main",
@@ -36,7 +36,9 @@
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "mongoose": "^5.10.7",
-    "mongoose-unique-validator": "^2.0.3"
+    "mongoose-unique-validator": "^2.0.3",
+    "nodemailer": "^6.4.14",
+    "nodemailer-sendgrid-transport": "^0.2.0"
   },
   "devDependencies": {
     "concurrently": "^5.3.0",
