@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function Slot({ timing, onSelect, isSelected }) {
-  const getColor = () => {
+  const getTheme = () => {
     if (timing.booked) {
       return 'bg-gray-400 text-gray-600 cursor-not-allowed ';
     }
@@ -17,7 +17,7 @@ export default function Slot({ timing, onSelect, isSelected }) {
 
   return (
     <div
-      className={`w-32 p-2 m-2 ${getColor()} text-center rounded-lg text-lg lg:h-10`}
+      className={`w-32 p-2 m-2 ${getTheme()} text-center rounded-lg text-lg lg:h-10`}
       onClick={handleOnClick}
     >
       {timing.time}
