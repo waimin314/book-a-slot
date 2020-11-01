@@ -31,6 +31,7 @@ export default function FormView() {
       <div className={`${bookingStatus ? 'visible' : 'hidden'}`}>
         <Popup
           name={name}
+          email={email}
           time={slot}
           date={selectedDate.toLocaleDateString()}
         ></Popup>

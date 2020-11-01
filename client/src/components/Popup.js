@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Popup({ name, time, date }) {
+export default function Popup({ name, email, time, date }) {
   return (
     <div className='h-screen px-12 w-full fixed left-0 top-0 flex flex-col justify-center items-center bg-black bg-opacity-50 '>
       <div className='animate-slideIn lg:w-1/3'>
@@ -14,7 +14,8 @@ export default function Popup({ name, time, date }) {
         >
           <p className='text-xl'>
             Hi <strong>{name}</strong>. Your booking for <strong>{time}</strong>{' '}
-            on <strong>{date}</strong> is confirmed!.
+            on <strong>{date}</strong> is confirmed! A confirmation email has
+            been dispatched to <strong>{email}</strong>.
           </p>
           <Link to='/'>
             <button
