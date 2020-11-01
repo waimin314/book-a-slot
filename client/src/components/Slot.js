@@ -6,9 +6,9 @@ export default function Slot({ timing, onSelect, isSelected }) {
       return 'bg-gray-400 text-gray-600 cursor-not-allowed ';
     }
     if (isSelected) {
-      return 'bg-indigo-600 text-white';
+      return 'bg-indigo-600 text-white shadow-xl';
     }
-    return 'bg-blue-300 cursor-pointer';
+    return 'bg-blue-300 cursor-pointer shadow-md';
   };
 
   const handleOnClick = () => {
