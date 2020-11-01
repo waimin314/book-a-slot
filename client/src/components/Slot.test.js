@@ -12,13 +12,13 @@ describe('When rendering', () => {
     expect(component.container).toHaveTextContent(bookedTiming.time);
   });
 
-  test('should render blue color background for availble slot', () => {
+  test('Should render blue color background for availble slot', () => {
     const component = render(<Slot timing={freeTiming} />);
     const div = component.container.querySelector('.bg-blue-300');
     expect(div).toHaveTextContent(freeTiming.time);
   });
 
-  test('should render gray color background for booked slot', () => {
+  test('Should render gray color background for booked slot', () => {
     const component = render(<Slot timing={bookedTiming} />);
     const div = component.container.querySelector('.bg-gray-400');
     expect(div).toHaveTextContent(bookedTiming.time);
